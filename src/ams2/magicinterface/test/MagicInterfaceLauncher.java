@@ -1,5 +1,10 @@
 package ams2.magicinterface.test;
 
+import java.io.File;
+import java.util.ArrayList;
+
+import ams2.magicinterface.baseclases.Carta;
+import ams2.magicinterface.baseclases.Coste;
 import ams2.magicinterface.jframes.BaseJframe;
 
 public class MagicInterfaceLauncher {
