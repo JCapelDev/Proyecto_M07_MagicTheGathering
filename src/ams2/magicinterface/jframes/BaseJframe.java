@@ -82,6 +82,4 @@ public class BaseJframe extends JFrame {
 		btnDeleteCard.setBounds(353, 252, 132, 32);
 		contentPane.add(btnDeleteCard);
 	}
-
-	
 }
