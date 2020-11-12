@@ -1,5 +1,7 @@
 package ams2.magicinterface.baseclases;
 
+import java.io.File;
+
 public class Carta {
 	private String name;
 	private Coste cost;
@@ -10,11 +12,11 @@ public class Carta {
 	private int toughness;
 	private String rules;
 	private String lore;
-	private String imagePath;
+	private File imageArt;
 	
 	
 	public Carta(String name, Coste cost, String type, String subType, String edition, int power, int toughness,
-			String rules, String lore, String imagePath) {
+			String rules, String lore, File imageArt) {
 		super();
 		setName(name);
 		setCost(cost);
@@ -25,7 +27,7 @@ public class Carta {
 		setToughness(toughness);
 		setRules(rules);
 		setLore(lore);
-		setImagePath(imagePath);
+		setimageArt(imageArt);
 		
 	}
 	public Carta() {
@@ -85,12 +87,13 @@ public class Carta {
 	public void setLore(String lore) {
 		this.lore = lore;
 	}
-	public String getImagePath() {
-		return imagePath;
+	public File getimageArt() {
+		return imageArt;
 	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setimageArt(File imageArt) {
+		this.imageArt = imageArt;
 	}
+	
 	
 	
 

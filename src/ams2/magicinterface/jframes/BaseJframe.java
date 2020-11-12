@@ -47,16 +47,27 @@ public class BaseJframe extends JFrame {
 	
 	
 	public BaseJframe() {
+		//Costes y Cartas de Ejemplo
+		Coste coe1 = new Coste(2,0,0,0,0,1);
+		Coste coe2 = new Coste(0,0,0,0,0,1);
+		Coste coe3 = new Coste(0,0,1,0,0,1);
 		
-//		Coste co1 = new Coste();
-//		co1.setLlanura(2);
-//		co1.setIncoloro(1);
-//		Carta c1 = new Carta("Himno Glorioso",co1,"Encantamiento",null,"m7",0,0,"Las criatura que controlas obtienen +1/+1.","Norte y sur se encuentran, y los ángeles cantan. Las voces resuenan con un sonido virtuoso.","imgs"+File.separator+"icons"+File.separator+"W.png");
-//		aCards.add(c1);
-//		System.out.println(aCards.get(0).getName());
+		File fe1=new File("imgs"+File.separator+"icons"+File.separator+"W.png");
+		File fe2=new File("imgs"+File.separator+"icons"+File.separator+"B.png");
+		File fe3=new File("imgs"+File.separator+"icons"+File.separator+"C.png");
+		
+		Carta ce1 = new Carta("Himno Glorioso",coe1,"Encantamiento","","Seventh Edition",0,0,"Las criaturas obtienen +1/+1","La balada de los paladines",fe1);
+		Carta ce2 = new Carta("Disciple of Griselbrand",coe3,"Criatura","Human Cleric","Mirrodin",1,1,"Sacrifice a creature","The demon Griselbrand dared to stand against Avacyn",fe2);
+		Carta ce3 = new Carta("Pergamino de Griselbrand",coe2,"Artefacto","","Avacyn Restored",0,0,"Sacrificar el pergamino de Griselbrand","Palabras que los ojos no deberian ver",fe3);
+		
+		aCards.add(ce1);
+		aCards.add(ce2);
+		aCards.add(ce3);
+		//
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 377);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,9 +98,17 @@ public class BaseJframe extends JFrame {
 		JButton btnViewCards = new JButton("Ver Cartas");
 		btnViewCards.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.print(aCards.get(0).getName()+" ");
-				aCards.get(0).getCost().returnAllCosts();
-				System.out.print(" "+aCards.get(0).getType());
+//				System.out.print(aCards.get(0).getName()+" ");
+//				aCards.get(0).getCost().returnAllCosts();
+//				System.out.print(" "+aCards.get(0).getType()
+//						+" "+aCards.get(0).getSubType()
+//						+" "+aCards.get(0).getEdition()
+//						+" "+aCards.get(0).getPower()
+//						+" "+aCards.get(0).getToughness()
+//						+" "+aCards.get(0).getRules()
+//						+" "+aCards.get(0).getLore()
+//						+" "+aCards.get(0).getimageArt().getAbsolutePath());
+				new ViewCardJframe();
 			}
 		});
 		btnViewCards.setBounds(199, 252, 126, 32);
