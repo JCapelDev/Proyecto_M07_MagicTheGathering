@@ -150,8 +150,10 @@ public class ViewCardJframe extends JFrame {
 						lblCardName.setText(BaseJframe.aCards.get(i).getName());
 						lblTypeSubType.setText(BaseJframe.aCards.get(i).getType().concat(" - ").concat(BaseJframe.aCards.get(i).getSubType()));
 						lblEdition.setText(BaseJframe.aCards.get(i).getEdition());
-						Icon newIcon = new ImageIcon(BaseJframe.aCards.get(i).getimageArt().getAbsolutePath());
-						lblImageLabel.setIcon(newIcon);
+						if(BaseJframe.aCards.get(i).getimageArt()!=null) {
+							Icon newIcon = new ImageIcon(BaseJframe.aCards.get(i).getimageArt().getAbsolutePath());
+							lblImageLabel.setIcon(newIcon);
+						}
 						lblPower.setText(String.valueOf(BaseJframe.aCards.get(i).getPower()));
 						lblToughness.setText(String.valueOf(BaseJframe.aCards.get(i).getToughness()));
 						textPaneRules.setText(BaseJframe.aCards.get(i).getRules());
