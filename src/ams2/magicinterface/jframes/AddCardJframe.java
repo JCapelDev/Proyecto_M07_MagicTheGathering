@@ -318,8 +318,8 @@ public class AddCardJframe extends JFrame {
 						co1,comboBoxType.getSelectedItem().toString(),
 						"",
 						comboBoxEdition.getSelectedItem().toString(),
-						spinnerPower.getComponentCount(),
-						spinnerToughness.getComponentCount(),
+						(int) spinnerPower.getValue(),
+						(int) spinnerToughness.getValue(),
 						textAreaRules.getText(),
 						textAreaLore.getText(),
 						artFile);
