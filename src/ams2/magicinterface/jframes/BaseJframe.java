@@ -13,6 +13,8 @@ import ams2.magicinterface.baseclases.Coste;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -80,7 +82,7 @@ public class BaseJframe extends JFrame {
 		contentPane.add(lblTittle);
 		
 		JButton btnAddCard = new JButton("A\u00F1adir Carta");
-		btnAddCard.setBounds(36, 252, 132, 32);
+		btnAddCard.setBounds(63, 246, 141, 45);
 		contentPane.add(btnAddCard);
 		
 		btnAddCard.addActionListener(new ActionListener(){
@@ -111,18 +113,17 @@ public class BaseJframe extends JFrame {
 				new ViewCardJframe();
 			}
 		});
-		btnViewCards.setBounds(199, 252, 126, 32);
+		btnViewCards.setBounds(327, 246, 155, 45);
 		contentPane.add(btnViewCards);
 		
-		JButton btnDeleteCard = new JButton("Eliminar Carta");
-		btnDeleteCard.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnDeleteCard.setBounds(353, 252, 155, 32);
-		contentPane.add(btnDeleteCard);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogo.setBounds(32, 83, 486, 116);
+		Icon iLogo = new ImageIcon("imgs"+File.separator+"Magic_Logo.png");
+		lblLogo.setIcon(iLogo);
+		contentPane.add(lblLogo);
+		
 		setVisible(true);
 	}
-	
 }
 

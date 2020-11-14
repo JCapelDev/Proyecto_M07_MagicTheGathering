@@ -13,6 +13,9 @@ import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
+
+import ams2.magicinterface.baseclases.Coste;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextPane;
@@ -33,6 +36,7 @@ public class ViewCardJframe extends JFrame {
 
 	private JPanel contentPane;
 	private ArrayList<String> alC;
+	private JPanel panelCost;
 	
 
 	/**
@@ -76,11 +80,6 @@ public class ViewCardJframe extends JFrame {
 		lblCardName.setFont(new Font("Source Serif Pro Black", Font.BOLD, 11));
 		lblCardName.setBounds(10, 11, 141, 14);
 		panel.add(lblCardName);
-		
-		JLabel lblCardCost = new JLabel("Coste");
-		lblCardCost.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCardCost.setBounds(161, 11, 71, 14);
-		panel.add(lblCardCost);
 		
 		JLabel lblImageLabel = new JLabel("");
 		lblImageLabel.setBounds(20, 30, 212, 136);
@@ -128,6 +127,10 @@ public class ViewCardJframe extends JFrame {
 		lblBarrica.setVisible(false);
 		panel.add(lblBarrica);
 		
+		panelCost = new JPanel();
+		panelCost.setBounds(121, 11, 123, 21);
+		panel.add(panelCost);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 44, 186, 183);
 		contentPane.add(scrollPane);
@@ -142,6 +145,7 @@ public class ViewCardJframe extends JFrame {
 		cardList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				lblPower.setVisible(false);
 				lblToughness.setVisible(false);
 				lblBarrica.setVisible(false);
@@ -163,6 +167,8 @@ public class ViewCardJframe extends JFrame {
 							lblToughness.setVisible(true);
 							lblBarrica.setVisible(true);
 						}
+						
+						addCostToPanelCost(BaseJframe.aCards.get(i).getCost());
 						
 					}
 					
@@ -204,6 +210,83 @@ public class ViewCardJframe extends JFrame {
 		btnNewButton.setBounds(10, 11, 89, 23);
 		contentPane.add(btnNewButton);
 		
+		JButton btnDeleteCard = new JButton("Borrar Carta");
+		btnDeleteCard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(cardList.getSelectedIndex());
+				BaseJframe.aCards.remove(cardList.getSelectedIndex());
+				alC.remove(cardList.getSelectedIndex());
+				model1.remove(cardList.getSelectedIndex());
+				
+				
+				cardList.setModel(model1);
+			}
+		});
+		btnDeleteCard.setBounds(55, 291, 129, 34);
+		contentPane.add(btnDeleteCard);
+		
 		setVisible(true);
+	}
+	
+	public void addCostToPanelCost(Coste c1) {
+		int cont = 0;
+		int compCount = panelCost.getComponentCount();
+		if(compCount>0) {
+			for (int i = compCount-1; i >=0; i--) {
+				panelCost.remove(i);
+			}
+		}
+		
+		while (c1.getIncoloro()!=0 && cont != c1.getIncoloro()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"1.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		while (c1.getLlanura()!=0 && cont != c1.getLlanura()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"W.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		while (c1.getIsla()!=0 && cont != c1.getIsla()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"U.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		while (c1.getPantano()!=0 && cont != c1.getPantano()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"B.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		while (c1.getMontana()!=0 && cont != c1.getMontana()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"R.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		while (c1.getBosque()!=0 && cont != c1.getBosque()) {
+			JLabel jl = new JLabel();
+			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"G.png");
+			jl.setIcon(ic);
+			panelCost.add(jl);
+			cont++;
+		}
+		cont=0;
+		
+		
+		
 	}
 }

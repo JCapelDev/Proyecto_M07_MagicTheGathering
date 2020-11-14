@@ -25,6 +25,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 import java.io.File;
@@ -330,6 +332,8 @@ public class AddCardJframe extends JFrame {
 					BaseJframe.aCards.add(c1);
 
 				aFillSubType.clear();
+				JOptionPane.showMessageDialog(null, "Carta Anadida");
+				dispose();
 
 			}
 		});
