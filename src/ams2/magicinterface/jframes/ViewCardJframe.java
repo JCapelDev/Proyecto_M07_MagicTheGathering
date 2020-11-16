@@ -38,26 +38,6 @@ public class ViewCardJframe extends JFrame {
 	private ArrayList<String> alC;
 	private JPanel panelCost;
 	
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ViewCardJframe frame = new ViewCardJframe();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ViewCardJframe() {
 		alC= new ArrayList<>();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,13 +49,14 @@ public class ViewCardJframe extends JFrame {
 		
 		
 		
-		
+		//JPanel que contiene los elementos que visalizan la carta
 		JPanel panel = new JPanel();
 		panel.setBorder(new MatteBorder(6, 6, 6, 6, (Color) Color.BLACK));
 		panel.setBounds(282, 11, 254, 329);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		//Coleccion de los elementos que visalizaran las diferentes partes de la carta
 		JLabel lblCardName = new JLabel("Nombre de la Carta");
 		lblCardName.setFont(new Font("Source Serif Pro Black", Font.BOLD, 11));
 		lblCardName.setBounds(10, 11, 141, 14);
@@ -127,25 +108,31 @@ public class ViewCardJframe extends JFrame {
 		lblBarrica.setVisible(false);
 		panel.add(lblBarrica);
 		
+		//Inicializacion del panel que contentra las labels con los costes
 		panelCost = new JPanel();
 		panelCost.setBounds(121, 11, 123, 21);
 		panel.add(panelCost);
 		
+		//ScrollPanel que contiene la lista con los nombres de las cartas
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 44, 186, 183);
 		contentPane.add(scrollPane);
 		DefaultListModel<String> model1 = new DefaultListModel();
 		model1.clear();
+		//Añadir al modelo de JList las diferentes cartas
 		for (int i = 0; i < BaseJframe.aCards.size(); i++) {
 			alC.add(BaseJframe.aCards.get(i).getName());
 			model1.addElement(BaseJframe.aCards.get(i).getName());
 			
 		}
 		JList cardList = new JList();
+		
+		
+		//Evento de la lista que en ser selecionado uno de ellos mostrara los datos de la carta a la que hace referencia
 		cardList.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				//Estas labels permanecen ocultas mientras su tipo de carta no sea criatura
 				lblPower.setVisible(false);
 				lblToughness.setVisible(false);
 				lblBarrica.setVisible(false);
@@ -167,7 +154,7 @@ public class ViewCardJframe extends JFrame {
 							lblToughness.setVisible(true);
 							lblBarrica.setVisible(true);
 						}
-						
+						//Para llenar el panel de costes se llama a la funcion addCostToPanelCost
 						addCostToPanelCost(BaseJframe.aCards.get(i).getCost());
 						
 					}
@@ -175,32 +162,10 @@ public class ViewCardJframe extends JFrame {
 				}
 			}
 		});
-		cardList.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				
-			}
-		});
-		cardList.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				
-				
-				
-			}
-			@Override
-			public void focusLost(FocusEvent e) {
-				
-			}
-		});
-		
 		cardList.setModel(model1);
-		
-		
-		
-		
 		scrollPane.setViewportView(cardList);
 		
+		//JButton que permite regresar al frame anterior
 		JButton btnNewButton = new JButton("<- Atras");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,6 +175,8 @@ public class ViewCardJframe extends JFrame {
 		btnNewButton.setBounds(10, 11, 89, 23);
 		contentPane.add(btnNewButton);
 		
+		//Boton que contiene la logica para eliminar una carta de la lista y del array que la contiene
+		//y actualizar el modelo para su correcta visualizacion
 		JButton btnDeleteCard = new JButton("Borrar Carta");
 		btnDeleteCard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -228,7 +195,9 @@ public class ViewCardJframe extends JFrame {
 		setVisible(true);
 	}
 	
+	//Funcion que rellena el panel con los labels con sus imagenes
 	public void addCostToPanelCost(Coste c1) {
+		//Variable contador que indica cuantas veces se añadira una imagen por cada tipo de coste
 		int cont = 0;
 		int compCount = panelCost.getComponentCount();
 		if(compCount>0) {
@@ -236,7 +205,7 @@ public class ViewCardJframe extends JFrame {
 				panelCost.remove(i);
 			}
 		}
-		
+		//Creadores de las labels, solo se ejecutan si el valor del coste es superior a 0 y las veces que el contador no sea el mismo valor
 		while (c1.getIncoloro()!=0 && cont != c1.getIncoloro()) {
 			JLabel jl = new JLabel();
 			Icon ic = new ImageIcon("imgs"+File.separator+"icons"+File.separator+"1.png");

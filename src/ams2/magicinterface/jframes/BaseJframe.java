@@ -26,28 +26,7 @@ import java.awt.event.ActionEvent;
 public class BaseJframe extends JFrame {
 	public static ArrayList<Carta> aCards = new ArrayList<>();
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					BaseJframe frame = new BaseJframe();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
-	
-	
+	//Constructor principal, lanza el JFrame que sirve de base a la aplicación
 	public BaseJframe() {
 		//Costes y Cartas de Ejemplo
 		Coste coe1 = new Coste(2,0,0,0,0,1);
@@ -67,6 +46,7 @@ public class BaseJframe extends JFrame {
 		aCards.add(ce3);
 		//
 		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 547, 377);
 		setResizable(false);
@@ -75,12 +55,14 @@ public class BaseJframe extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Componentes basicos del JFrame
 		JLabel lblTittle = new JLabel("Gestor de Cartas de Magic the Gathering\u2122");
 		lblTittle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTittle.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblTittle.setBounds(22, 12, 496, 60);
 		contentPane.add(lblTittle);
 		
+		//Botón que abre un JFrame que contiene el formulario para añadir una carta
 		JButton btnAddCard = new JButton("A\u00F1adir Carta");
 		btnAddCard.setBounds(63, 246, 141, 45);
 		contentPane.add(btnAddCard);
@@ -97,25 +79,17 @@ public class BaseJframe extends JFrame {
 			
 		});
 		
+		//Botón que abre un JFrame que contiene los elementos que permiten visualizar las cartas
 		JButton btnViewCards = new JButton("Ver Cartas");
 		btnViewCards.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				System.out.print(aCards.get(0).getName()+" ");
-//				aCards.get(0).getCost().returnAllCosts();
-//				System.out.print(" "+aCards.get(0).getType()
-//						+" "+aCards.get(0).getSubType()
-//						+" "+aCards.get(0).getEdition()
-//						+" "+aCards.get(0).getPower()
-//						+" "+aCards.get(0).getToughness()
-//						+" "+aCards.get(0).getRules()
-//						+" "+aCards.get(0).getLore()
-//						+" "+aCards.get(0).getimageArt().getAbsolutePath());
 				new ViewCardJframe();
 			}
 		});
 		btnViewCards.setBounds(327, 246, 155, 45);
 		contentPane.add(btnViewCards);
 		
+		//Label que Contiene el logo que se muestra en el centro del JFrame
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogo.setBounds(32, 83, 486, 116);
